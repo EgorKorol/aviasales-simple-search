@@ -1,3 +1,15 @@
+# Aviasales simple-search
+
+In this project, you can see an example of work with React.js.
+
+### Main features:
+- The server realizes the long polling technic.
+- The server can send an error to one of the requests.
+- Repeat requests several times
+- All tickets are saving to the client.
+- Work with filters only client-side.
+- Border case handling.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

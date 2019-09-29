@@ -1,0 +1,8 @@
+.filter-wrapper {
+  padding: 0 0 10px 0;
+}
+
+.filter-wrapper__legend {
+  padding: 20px 20px 0;
+  margin-bottom: 10px;
+}

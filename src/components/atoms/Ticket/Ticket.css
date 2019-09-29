@@ -1,0 +1,32 @@
+.ticket {
+  padding: 20px;
+}
+
+.ticket__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.ticket__price {
+  font-size: 24px;
+  margin: 0;
+}
+
+.ticket__table {
+  width: 100%;
+}
+
+.ticket__table:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+.ticket__table td, .ticket__table th {
+  width: 33%;
+  text-align: left;
+}
+
+.ticket__table td {
+  font-size: 14px;
+}

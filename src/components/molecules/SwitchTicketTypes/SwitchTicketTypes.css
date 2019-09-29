@@ -1,0 +1,7 @@
+.switch-ticket-types {
+  display: flex;
+}
+
+.switch-ticket-types .switch-button {
+  flex-basis: 50%;
+}

@@ -1,0 +1,27 @@
+.app {
+  max-width: 754px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.app__header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.app__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.app__aside {
+  max-width: 232px;
+  width: 100%;
+}
+
+.app__section {
+  max-width: 502px;
+  width: 100%;
+}
