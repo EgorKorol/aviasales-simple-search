@@ -25,11 +25,11 @@
 }
 
 .checkbox__input:disabled+.checkbox__box {
-  border-color: gray;
+  border-color: #808080;
 }
 
 .checkbox__input:checked:disabled+.checkbox__box {
-  border-color: gray;
+  border-color: #808080;
 }
 
 .checkbox__input:checked:disabled+.checkbox__box::before {

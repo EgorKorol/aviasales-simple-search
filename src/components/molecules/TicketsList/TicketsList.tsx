@@ -3,6 +3,8 @@ import React from 'react';
 import './TicketsList.css';
 import { ITicket, Ticket, Loader, TicketsMessageTemplate } from '../../atoms';
 
+const pluralize = require('numeralize-ru').pluralize;
+
 export interface IProps {
   allTicketsLength: number;
   tickets: ITicket[];
@@ -34,7 +36,7 @@ const getTicketsView = (
   if (!tickets.length) {
     return (
       <TicketsMessageTemplate
-        text={`Мы нашли ${allTicketsLength} рейсов, но ни один не соответствует заданным фильтрам.`}
+        text={`Мы нашли ${allTicketsLength} ${pluralize(allTicketsLength, 'рейс', 'рейса', 'рейсов')}, но ни один не соответствует заданным фильтрам.`}
         buttonText="Расслабить фильтры"
         onClick={onClearFiltersHandler}
       />

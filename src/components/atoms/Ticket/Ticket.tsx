@@ -1,7 +1,9 @@
 import React from 'react';
 
 import './Ticket.css';
-import { durationConvert, timeConvert, getNumberOfTransfers, getTransfers } from '../../../helpers';
+import { durationConvert, timeConvert, getTransfers, getFormattedPrice } from '../../../helpers';
+
+const pluralize = require('numeralize-ru').pluralize;
 
 export interface ITicket {
   price: number;
@@ -25,12 +27,11 @@ export const Ticket: React.FC<IProps> = ({ price, carrier, segments }) => {
   return (
     <div className="ticket card">
       <div className="ticket__header">
-        <p
-          className="ticket__price color-blue font-weight-600"
-        >
-          {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} Р
-        </p>
+        <p className="ticket__price color-blue font-weight-600">{getFormattedPrice(price)}</p>
         {
+          /**
+           * Alt is empty for a11y
+           */
           // @ts-ignore
           <img
             src={`http://pics.avs.io/99/36/${carrier}@2x.png`}
@@ -46,7 +47,9 @@ export const Ticket: React.FC<IProps> = ({ price, carrier, segments }) => {
           <tr>
             <th className="text-uppercase color-gray">{from.destination} - {from.origin}</th>
             <th className="text-uppercase color-gray">В пути</th>
-            <th className="text-uppercase color-gray">{getNumberOfTransfers(from.stops)}</th>
+            <th className="text-uppercase color-gray">
+              {from.stops.length} {pluralize(from.stops.length, 'пересадка', 'пересадки', 'пересадок')}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +65,13 @@ export const Ticket: React.FC<IProps> = ({ price, carrier, segments }) => {
           <tr>
             <th className="text-uppercase color-gray">{to.origin} - {to.destination}</th>
             <th className="text-uppercase color-gray">В пути</th>
-            <th className="text-uppercase color-gray">{getNumberOfTransfers(to.stops)}</th>
+            <th className="text-uppercase color-gray">
+              {
+                to.stops.length
+                  ? to.stops.length
+                  : 'без'
+              } {pluralize(to.stops.length, 'пересадка', 'пересадки', 'пересадок')}
+            </th>
           </tr>
         </thead>
         <tbody>

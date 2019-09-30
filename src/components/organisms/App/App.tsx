@@ -68,13 +68,15 @@ export default class App extends Component<IProps, IAppState> {
             tickets: [...state.tickets, ...tickets],
             isTicketsLoading: false,
           }), () => this.updateTicketsByStopsFilter(this.state.stopFilters));
-        } else {
-          this.setState(() => ({
-            tickets: [...this.state.tickets, ...tickets],
-          }));
 
-          this.getTicketsWithSearchId(searchId);
+          return;
         }
+
+        this.setState(() => ({
+          tickets: [...this.state.tickets, ...tickets],
+        }));
+
+        this.getTicketsWithSearchId(searchId);
       })
       .catch((error) => {
         this.setTicketsLoadError(error);
@@ -155,22 +157,24 @@ export default class App extends Component<IProps, IAppState> {
       this.setState(() => ({
         stopFilters: updatedStopsFilterData,
       }), () => this.updateTicketsByStopsFilter(this.state.stopFilters));
-    } else {
-      const newStopsFilterData = this.state.stopFilters.map((item) => {
-        return {
-          ...item,
-          checked: item.value === value
-            ? !item.checked
-            : item.checked,
-        };
-      });
-  
-      this.setState(() => ({
-        stopFilters: newStopsFilterData,
-      }), () => this.updateTicketsByStopsFilter(this.state.stopFilters));
-  
-      this.selectDeselectAllStopsFilters(newStopsFilterData);
+
+      return;
     }
+
+    const newStopsFilterData = this.state.stopFilters.map((item) => {
+      return {
+        ...item,
+        checked: item.value === value
+          ? !item.checked
+          : item.checked,
+      };
+    });
+
+    this.setState(() => ({
+      stopFilters: newStopsFilterData,
+    }), () => this.updateTicketsByStopsFilter(this.state.stopFilters));
+
+    this.selectDeselectAllStopsFilters(newStopsFilterData);
   }
 
   handleChangeType(value: TypeFilters) {
